@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const staticExport = process.env.STATIC_EXPORT === "true";
-const basePath = process.env.NEXT_BASE_PATH?.trim() || "";
+/** Same value as CI `NEXT_PUBLIC_BASE_PATH` (e.g. `/repo` for GitHub project Pages). */
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH?.trim() || "";
 
 const nextConfig: NextConfig = {
   ...(staticExport ? { output: "export" as const } : {}),

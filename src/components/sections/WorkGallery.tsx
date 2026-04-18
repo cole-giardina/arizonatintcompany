@@ -1,6 +1,7 @@
 import { Container } from "@/components/layout/Container";
 import { BeforeAfterSlider } from "@/components/ui/before-after-slider";
 import { FeatureCarousel } from "@/components/ui/feature-carousel";
+import { publicAsset } from "@/lib/public-path";
 import { showcaseCarImages } from "@/lib/showcase-car-images";
 
 export function WorkGallery() {
@@ -39,8 +40,8 @@ export function WorkGallery() {
         </div>
         <div className="mx-auto mt-8 max-w-3xl">
           <BeforeAfterSlider
-            beforeSrc="/gallery/before.jpg"
-            afterSrc="/gallery/after.jpg"
+            beforeSrc={publicAsset("/gallery/before.jpg")}
+            afterSrc={publicAsset("/gallery/after.jpg")}
             beforeLabel="Before"
             afterLabel="After"
             alt="Comparison of vehicle appearance before and after tint"

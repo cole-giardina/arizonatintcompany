@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { Container } from "@/components/layout/Container";
+import { publicAsset } from "@/lib/public-path";
 import { site } from "@/lib/site";
 
-const heroImage = "/gallery/hero.jpg";
+const heroImage = publicAsset("/gallery/hero.jpg");
 
 export function Hero() {
   return (
