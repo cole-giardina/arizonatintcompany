@@ -1,26 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-ink: #0f1419;
+  --color-ink-muted: #4b5563;
+  --color-surface: #faf8f5;
+  --color-muted: #f0ebe3;
+  --color-border: #e8e0d4;
+  --color-hero-bg: #0c1220;
+  --color-hero-fg: #f4f1eb;
+  --color-accent: #d97706;
+  /* Darker than accent for small text on --color-muted (WCAG AA contrast). */
+  --color-accent-strong: #92400e;
+  --color-accent-foreground: #0f1419;
+  --shadow-soft: 0 18px 50px -24px rgb(15 20 25 / 0.35);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-background: var(--color-surface);
+  --color-foreground: var(--color-ink);
+  --color-muted-foreground: var(--color-ink-muted);
+  /* shadcn-style tokens */
+  --color-primary: var(--color-accent);
+  --font-sans: var(--font-body);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+:focus-visible {
+  outline-color: var(--color-accent);
 }
