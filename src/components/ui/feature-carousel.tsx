@@ -62,7 +62,7 @@ export const FeatureCarousel = React.forwardRef<
         <div className="absolute bottom-0 right-[-20%] top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(15,20,25,0.12),rgba(255,255,255,0))]" />
       </div>
 
-      <div className="z-10 flex w-full max-w-5xl flex-col items-center space-y-6 text-center md:space-y-12">
+      <div className="z-10 flex w-full max-w-7xl flex-col items-center space-y-6 text-center md:space-y-10">
         <div className="space-y-3">
           <h2
             id={titleId}
@@ -70,13 +70,13 @@ export const FeatureCarousel = React.forwardRef<
           >
             {title}
           </h2>
-          <p className="mx-auto max-w-lg text-muted-foreground md:text-lg">
+          <p className="mx-auto max-w-2xl text-muted-foreground md:text-lg">
             {subtitle}
           </p>
         </div>
 
-        <div className="relative flex h-[320px] w-full items-center justify-center md:h-[420px]">
-          <div className="relative flex h-full w-full items-center justify-center [perspective:1000px]">
+        <div className="relative flex min-h-[200px] w-full items-center justify-center py-2 sm:min-h-[240px] md:min-h-[280px]">
+          <div className="relative flex h-full min-h-[inherit] w-full max-w-6xl items-center justify-center [perspective:1200px]">
             {images.map((image, index) => {
               const offset = index - currentIndex;
               const total = images.length;
@@ -92,26 +92,27 @@ export const FeatureCarousel = React.forwardRef<
                 <div
                   key={image.src}
                   className={cn(
-                    "absolute flex h-96 w-48 items-center justify-center transition-all duration-500 ease-in-out md:h-[450px] md:w-64",
+                    "absolute flex w-[min(92vw,480px)] max-w-[480px] items-center justify-center transition-all duration-500 ease-in-out sm:w-[min(90vw,540px)] sm:max-w-[540px] md:w-[min(88vw,640px)] md:max-w-[640px]",
+                    "aspect-[16/9]",
                   )}
                   style={{
                     transform: `
-                        translateX(${pos * 45}%)
-                        scale(${isCenter ? 1 : isAdjacent ? 0.85 : 0.7})
-                        rotateY(${pos * -10}deg)
+                        translateX(${pos * 52}%)
+                        scale(${isCenter ? 1 : isAdjacent ? 0.88 : 0.72})
+                        rotateY(${pos * -8}deg)
                       `,
                     zIndex: isCenter ? 10 : isAdjacent ? 5 : 1,
-                    opacity: isCenter ? 1 : isAdjacent ? 0.4 : 0,
-                    filter: isCenter ? "blur(0px)" : "blur(4px)",
+                    opacity: isCenter ? 1 : isAdjacent ? 0.45 : 0,
+                    filter: isCenter ? "blur(0px)" : "blur(3px)",
                     visibility: Math.abs(pos) > 1 ? "hidden" : "visible",
                   }}
                 >
-                  <div className="relative h-full w-full overflow-hidden rounded-3xl shadow-xl ring-1 ring-[var(--color-ink)]/10">
+                  <div className="relative h-full w-full overflow-hidden rounded-2xl shadow-xl ring-1 ring-[var(--color-ink)]/10 md:rounded-3xl">
                     <Image
                       src={image.src}
                       alt={image.alt}
                       fill
-                      sizes="(max-width: 768px) 192px, 256px"
+                      sizes="(max-width: 640px) 92vw, (max-width: 1024px) 70vw, 640px"
                       className="object-cover"
                       priority={isCenter}
                     />
@@ -125,7 +126,7 @@ export const FeatureCarousel = React.forwardRef<
             type="button"
             variant="outline"
             size="icon"
-            className="absolute left-2 top-1/2 z-20 h-10 w-10 -translate-y-1/2 rounded-full bg-background/50 backdrop-blur-sm sm:left-8"
+            className="absolute left-0 top-1/2 z-20 h-10 w-10 -translate-y-1/2 rounded-full bg-background/50 backdrop-blur-sm sm:left-2 md:left-4"
             onClick={handlePrev}
             aria-label="Previous photo"
           >
@@ -135,7 +136,7 @@ export const FeatureCarousel = React.forwardRef<
             type="button"
             variant="outline"
             size="icon"
-            className="absolute right-2 top-1/2 z-20 h-10 w-10 -translate-y-1/2 rounded-full bg-background/50 backdrop-blur-sm sm:right-8"
+            className="absolute right-0 top-1/2 z-20 h-10 w-10 -translate-y-1/2 rounded-full bg-background/50 backdrop-blur-sm sm:right-2 md:right-4"
             onClick={handleNext}
             aria-label="Next photo"
           >
