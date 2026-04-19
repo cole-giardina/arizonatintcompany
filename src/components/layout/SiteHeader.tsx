@@ -1,18 +1,36 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ArrowRight, Menu, X } from "lucide-react";
+import { publicAsset } from "@/lib/public-path";
 import { navLinks, site } from "@/lib/site";
+
+/** Vector logo — true transparency; swap file to update. */
+const logoSrc = publicAsset("/azt-logo.svg");
 
 const SCROLL_TOP_SHOW = 72;
 const DELTA_THRESHOLD = 8;
 
 export function SiteHeader() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [navHidden, setNavHidden] = useState(false);
   const lastScrollY = useRef(0);
   const menuId = useId();
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const onLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      scrollToTop();
+    }
+  };
 
   useEffect(() => {
     lastScrollY.current = window.scrollY;
@@ -53,15 +71,18 @@ export function SiteHeader() {
         >
           <Link
             href="/"
-            className="group relative min-w-0 shrink-0 font-[family-name:var(--font-display)] text-[0.95rem] font-semibold leading-tight tracking-tight text-white sm:text-base md:text-lg"
+            onClick={onLogoClick}
+            className="relative shrink-0 rounded-md outline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/80"
           >
-            <span className="block truncate sm:whitespace-normal">
-              Arizona Tint
-              <span className="hidden sm:inline"> Company</span>
-            </span>
-            <span
-              className="mt-1 block h-0.5 w-10 rounded-full bg-gradient-to-r from-[var(--color-accent)] to-amber-400/90 opacity-90 transition-[width] group-hover:w-14"
-              aria-hidden
+            <Image
+              src={logoSrc}
+              alt={`${site.name} — home`}
+              width={1215}
+              height={247}
+              unoptimized
+              className="h-8 w-auto max-w-[min(88vw,380px)] object-contain object-left sm:h-9 md:h-10 md:max-w-[420px]"
+              priority
+              sizes="(max-width: 768px) 88vw, 420px"
             />
           </Link>
 
@@ -77,13 +98,7 @@ export function SiteHeader() {
             ))}
           </div>
 
-          <div className="flex shrink-0 items-center gap-1.5 sm:gap-2 md:gap-3">
-            <a
-              href={site.phoneHref}
-              className="hidden text-sm font-medium text-white/65 transition hover:text-white/95 xl:inline"
-            >
-              {site.phoneDisplay}
-            </a>
+          <div className="flex shrink-0 items-center gap-2 md:gap-3">
             <a
               href="#contact"
               className="hidden items-center gap-1.5 rounded-full bg-white/12 px-3 py-1.5 text-sm font-semibold text-white shadow-sm transition hover:bg-white/20 md:inline-flex"
@@ -123,21 +138,14 @@ export function SiteHeader() {
               </li>
             ))}
           </ul>
-          <div className="mt-2 border-t border-white/10 pt-3">
+          <div className="mt-2 border-t border-white/10 pt-3 md:hidden">
             <a
               href="#contact"
               className="flex items-center justify-center gap-2 rounded-full bg-[var(--color-accent)] px-4 py-3 text-center text-sm font-semibold text-[var(--color-accent-foreground)]"
               onClick={() => setOpen(false)}
             >
               {site.ctaLabel}
-              <ArrowRight className="h-4 w-4" aria-hidden />
-            </a>
-            <a
-              href={site.phoneHref}
-              className="mt-2 block py-2 text-center text-sm font-medium text-white/70"
-              onClick={() => setOpen(false)}
-            >
-              {site.phoneDisplay}
+              <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
             </a>
           </div>
         </div>

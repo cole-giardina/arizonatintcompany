@@ -1,28 +1,23 @@
 import { publicAsset } from "@/lib/public-path";
 
 /**
- * Shop gallery — replace files in `public/gallery/` (01.jpg–05.jpg) with your own
- * finished work for the carousel. Keep similar aspect ratios for best results.
+ * Shop gallery — images live in `public/gallery/`. Swap files anytime.
  */
 export const showcaseCarImages = [
   {
-    src: publicAsset("/gallery/01.jpg"),
-    alt: "Automotive tint work — finished install",
+    src: publicAsset("/gallery/carousel-1.png"),
+    alt: "Blue Porsche 911 GT3 side profile in the shop with tinted glass",
   },
   {
-    src: publicAsset("/gallery/02.jpg"),
-    alt: "Sports car with window film installed",
+    src: publicAsset("/gallery/carousel-2.png"),
+    alt: "Metallic gray Mercedes-Benz convertible with tinted windows on a residential street",
   },
   {
-    src: publicAsset("/gallery/03.jpg"),
-    alt: "SUV side glass tint",
+    src: publicAsset("/gallery/carousel-3.png"),
+    alt: "Orange McLaren 650S Spider with top down in a parking lot",
   },
   {
-    src: publicAsset("/gallery/04.jpg"),
-    alt: "Performance vehicle profile after tint",
-  },
-  {
-    src: publicAsset("/gallery/05.jpg"),
-    alt: "Windshield and cabin glass treatment",
+    src: publicAsset("/gallery/carousel-4.png"),
+    alt: "Dark gray Ford Mustang side profile on a sunny suburban driveway",
   },
 ] as const;

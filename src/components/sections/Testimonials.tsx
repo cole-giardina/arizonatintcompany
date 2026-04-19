@@ -23,7 +23,7 @@ export function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           viewport={{ once: true }}
-          className="mx-auto flex max-w-xl flex-col items-center text-center"
+          className="mx-auto flex max-w-2xl flex-col items-center text-center"
         >
           <h2
             id="reviews-heading"
@@ -31,8 +31,8 @@ export function Testimonials() {
           >
             What drivers say
           </h2>
-          <p className="mt-3 text-sm text-foreground/70 md:text-base">
-            Sample lines—confirm on{" "}
+          <p className="mt-3 max-w-2xl text-sm text-foreground/70 md:text-base">
+            A plan for your car—not a one-size film. Excerpts from recent{" "}
             <a
               href={site.yelpUrl}
               rel="noopener noreferrer"
@@ -41,7 +41,7 @@ export function Testimonials() {
             >
               Yelp
             </a>{" "}
-            ({site.yelpRating} · {site.yelpReviewCount}).
+            reviews ({site.yelpRating} · {site.yelpReviewCount}).
           </p>
         </motion.div>
 

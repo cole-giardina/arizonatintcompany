@@ -35,7 +35,6 @@ export const navLinks = [
   { href: "#gallery", label: "Gallery" },
   { href: "#guides", label: "Guides" },
   { href: "#reviews", label: "Reviews" },
-  { href: "#contact", label: "Contact" },
 ] as const;
 
 export const footerColumns = [

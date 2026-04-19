@@ -11,7 +11,6 @@ import { Steps123 } from "@/components/sections/Steps123";
 import { TeamSection } from "@/components/sections/TeamSection";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { TrustStack } from "@/components/sections/TrustStack";
-import { ValueProps } from "@/components/sections/ValueProps";
 import { VehicleTypes } from "@/components/sections/VehicleTypes";
 import { WorkGallery } from "@/components/sections/WorkGallery";
 
@@ -27,7 +26,7 @@ export default function Home() {
       <SiteHeader />
       <main id="main-content" aria-labelledby="hero-heading">
         <Hero />
-        <ValueProps />
+        <Testimonials />
         <VehicleTypes />
         <WorkGallery />
         <ProductShowcase />
@@ -36,7 +35,6 @@ export default function Home() {
         <Services />
         <TrustStack />
         <TeamSection />
-        <Testimonials />
         <GuidesSection />
         <FaqSection />
         <ContactCta />
